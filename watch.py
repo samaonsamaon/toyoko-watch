@@ -17,10 +17,10 @@ HOTEL_ID = "00291"
 found = []
 
 for start_date in DATES:
-year, month, day = map(int, start_date.split("-"))
+    year, month, day = map(int, start_date.split("-"))
 from datetime import date, timedelta
 
-```
+
 end_date = str(date(year, month, day) + timedelta(days=1))
 
 url = (
@@ -52,7 +52,7 @@ try:
 
 except Exception as e:
     print(f"Error: {e}")
-```
+
 
 if found:
 body = (
@@ -74,7 +74,7 @@ with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
     smtp.send_message(msg)
 
 print("Mail sent")
-```
+
 
 else:
 print("No vacancy")
