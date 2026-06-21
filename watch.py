@@ -55,26 +55,23 @@ except Exception as e:
 
 
 if found:
-body = (
-"東横INNソウル東大門2で空室を検知しました。\n\n"
-+ "\n\n".join(found)
-)
-
-```
-msg = MIMEText(body, "plain", "utf-8")
-msg["Subject"] = "【空室発見】東横INNソウル東大門2"
-msg["From"] = os.environ["EMAIL_ADDRESS"]
-msg["To"] = os.environ["EMAIL_ADDRESS"]
-
-with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-    smtp.login(
-        os.environ["EMAIL_ADDRESS"],
-        os.environ["EMAIL_PASSWORD"]
+    body = (
+        "東横INNソウル東大門2で空室を検知しました。\n\n"
+        + "\n\n".join(found)
     )
-    smtp.send_message(msg)
 
-print("Mail sent")
+    msg = MIMEText(body, "plain", "utf-8")
+    msg["Subject"] = "【空室発見】東横INNソウル東大門2"
+    msg["From"] = os.environ["EMAIL_ADDRESS"]
+    msg["To"] = os.environ["EMAIL_ADDRESS"]
 
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(
+            os.environ["EMAIL_ADDRESS"],
+            os.environ["EMAIL_PASSWORD"]
+        )
+        smtp.send_message(msg)
 
+    print("Mail sent")
 else:
-print("No vacancy")
+    print("No vacancy")
