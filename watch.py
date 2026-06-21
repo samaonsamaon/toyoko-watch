@@ -54,7 +54,7 @@ except Exception as e:
     print(f"Error: {e}")
 
 
-if True:
+if found:
     body = (
         "東横INNソウル東大門2で空室を検知しました。\n\n"
         + "\n\n".join(found)
